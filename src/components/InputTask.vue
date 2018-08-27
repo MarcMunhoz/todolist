@@ -2,7 +2,10 @@
   <div>
     <input class="new-todo"
       @keyup.enter="addTask"
-      placeholder="What to do?">
+      placeholder="What to do?"
+      v-model.trim="msg2">
+    <p>The message is: {{ msg2 }}</p>
+    <button @click="says('WTF?!')">Click me!</button>
   </div>
 </template>
 
@@ -11,7 +14,9 @@ import { Task } from '../models/Task'
 
 export default {
   data () {
-    return {}
+    return {
+      msg2: ''
+    }
   },
   methods: {
     addTask ($event) {
@@ -20,6 +25,9 @@ export default {
       task.completed = false
       task.title = value
       console.log(task)
+    },
+    says: function (msg) {
+      alert(msg)
     }
   }
 }
