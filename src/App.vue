@@ -2,7 +2,7 @@
   <section class="todoapp">
     <header class="header">
       <h1>Tasks</h1>
-      <input-task></input-task>
+      <input-task @newTask="addTask"></input-task>
       <task-list :todo-list="tasks"></task-list>
     </header>
   </section>
@@ -11,15 +11,6 @@
 <script>
 import InputTask from './components/InputTask'
 import TaskList from './components/TaskList'
-import { Task } from './models/Task'
-
-let tasks = []
-let task = new Task()
-task.completed = false
-task.title = 'Task'
-tasks.push(task)
-tasks.push(task)
-tasks.push(task)
 
 export default {
   name: 'App',
@@ -29,7 +20,12 @@ export default {
   },
   data () {
     return {
-      tasks: tasks
+      tasks: []
+    }
+  },
+  methods: {
+    addTask (task) {
+      this.tasks.push(task)
     }
   }
 }

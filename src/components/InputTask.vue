@@ -2,10 +2,7 @@
   <div>
     <input class="new-todo"
       @keyup.enter="addTask"
-      placeholder="What to do?"
-      v-model.trim="msg2">
-    <p>The message is: {{ msg2 }}</p>
-    <button @click="says('WTF?!')">Click me!</button>
+      placeholder="What to do?">
   </div>
 </template>
 
@@ -15,7 +12,6 @@ import { Task } from '../models/Task'
 export default {
   data () {
     return {
-      msg2: ''
     }
   },
   methods: {
@@ -24,10 +20,8 @@ export default {
       let task = new Task()
       task.completed = false
       task.title = value
-      console.log(task)
-    },
-    says: function (msg) {
-      alert(msg)
+      this.$emit('newTask', task)
+      $event.target.value = ''
     }
   }
 }
@@ -37,12 +31,12 @@ export default {
 .todoapp input::-webkit-input-placeholder {
   font-style: italic;
   font-weight: 300;
-  color: #e6e6e6;
+  color: hsl(0, 14%, 90%);
 }
 .todoapp input::-moz-placeholder {
   font-style: italic;
   font-weight: 300;
-  color: #e6e6e6;
+  color: hsl(0, 14%, 90%);
 }
 .todoapp input::input-placeholder {
   font-style: italic;
