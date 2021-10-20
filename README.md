@@ -1,3 +1,5 @@
+**\* THIS REPOSITORY IS ARCHIVED AND WILL ONLY BE USED FOR QUICK LOOKUPS \***
+
 # todo-list
 
 > Todolist with Vue
